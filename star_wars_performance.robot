@@ -81,8 +81,6 @@ Mean Deviation
     FOR    ${resp_time}    IN    @{list}
         ${sum} =    Evaluate    ${resp_time}+${sum}
     END
-    Log    ${sum}
-    Log    ${N}
     ${result} =    Evaluate    ${sum}/${N}
     Log    ${result}
     [Return]    ${result}
@@ -98,5 +96,7 @@ Standard Deviation
         ${sum} =    Evaluate    ${sum} + ${sq_diff}
     END
     ${variance} =    Evaluate    ${sum} / (${N} - 1)
+    Log    ${variance}
     ${std_dev} =    Evaluate    math.sqrt(${variance})
+    Log    ${std_dev}
     [Return]    ${std_dev}

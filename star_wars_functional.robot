@@ -9,7 +9,7 @@ Suite Teardown    Stop Flask Server
 ${SERVER_URL}    http://localhost:5000
 
 *** Test Cases ***
-Get Person By Id Success 200
+Get People By Id Success 200
     [Documentation]    Verify that the correct person is returned when querying the API with a specific ID
     [Tags]             people
     ${id}              Set Variable    1
@@ -31,6 +31,18 @@ Get Persons with Id Not Found Fail 404
     ${response_body}          Set Variable    ${response.json()}
     Should Be Equal As Strings    ${response_body['error']}    Person with id ${missing_id} not found
 
+Get Planets By Id Success 200
+    [Documentation]    Verify that the correct person is returned when querying the API with a specific ID
+    [Tags]             people
+    ${id}              Set Variable    1
+    ${response}        Get    http://localhost:5000/planets/${id}
+    Should Be Equal As Strings    ${response.status_code}    200
+    ${person}          Set Variable    ${response.json()}
+    Should Be Equal As Strings    ${person['id']}    ${id}
+    Should Be Equal As Strings    ${person['name']}    Tatooine
+    Should Be Equal As Strings    ${person['rotation_period']}    23
+    Should Be Equal As Strings    ${person['orbital_period']}    304
+
 Get Planets with Id Not Found Fail 404
     [Documentation]    Verify that the correct planet is returned when querying the API with a specific ID
     ${missing_id}      Set Variable    3
@@ -38,6 +50,18 @@ Get Planets with Id Not Found Fail 404
     Should Be Equal As Strings    ${response.status_code}    404
     ${response_body}          Set Variable    ${response.json()}
     Should Be Equal As Strings    ${response_body['error']}    Planet with id ${missing_id} not found
+
+Get Starships By Id Success 200
+    [Documentation]    Verify that the correct person is returned when querying the API with a specific ID
+    [Tags]             people
+    ${id}              Set Variable    1
+    ${response}        Get    http://localhost:5000/starships/${id}
+    Should Be Equal As Strings    ${response.status_code}    200
+    ${person}          Set Variable    ${response.json()}
+    Should Be Equal As Strings    ${person['id']}    ${id}
+    Should Be Equal As Strings    ${person['name']}    CR90 corvette
+    Should Be Equal As Strings    ${person['model']}    CR90 corvette
+    Should Be Equal As Strings    ${person['manufacturer']}    Corellian Engineering Corporation
 
 Get Starships with Id Not Found Fail 404
     [Documentation]    Verify that the correct person is returned when querying the API with a specific ID
