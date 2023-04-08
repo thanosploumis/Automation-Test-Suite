@@ -36,3 +36,12 @@ client side
 d) shuts down the environment
 e) prints out mean &amp; standard deviation of the response time
 for the end-point
+
+------------ Build & RUN --------------------
+
+Step 1: $ docker build -t robot-image .
+Step 2:
+    a. Functional test suite
+        $ docker run -ti --rm -v $(pwd):/XM_exercise robot-image /bin/bash -c "robot --outputdir functional_logs star_wars_functional.robot"
+    b. Performance test suite
+        $ docker run -ti --rm -v $(pwd):/XM_exercise robot-image /bin/bash -c "robot --outputdir performance_logs star_wars_performance.robot"

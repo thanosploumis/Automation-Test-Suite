@@ -19,7 +19,7 @@ Access Endpoint Continuously
     ${end_time}        Get Future Date    ${start_time}    ${DURATION}
     ${current_time}    Get Current Date    result_format=epoch
     ${response_times}  Create List
-    WHILE    ${current_time} < ${end_time}
+    WHILE    ${current_time}<${end_time}
         ${response_start}    Get Current Date    result_format=epoch
         ${response}    Get    ${SERVER_URL}/people
         ${response_end}    Get Current Date    result_format=epoch

@@ -6,7 +6,7 @@ import time
 app = Flask(__name__)
 
 # Configure logging
-logging.basicConfig(filename='star_wars.log', level=logging.INFO)
+logging.basicConfig(filename='monitor_requests.log', level=logging.INFO)
 
 # In-memory database of people planets starships
 people = [
